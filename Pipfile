@@ -9,6 +9,7 @@ verify_ssl = true
 selenium = "*"
 bs4 = "*"
 spyder = "*"
+nltk = "*"
 
 [requires]
 python_version = "3.7"
