@@ -12,6 +12,19 @@ This is a temporary script file.
     Installing nltk: tokenizer, tagger
     dafault path are in \AppData\Roaming\nltk_data
     Search '%appdata%' will open up roaming folder
+    
+    tokenizeString takes a string and break it into tokens
+    
+    tagTokens will tag the tokens from tokenizeString according to its type
+    
+    filterTagAndSelectTokens will both tokenizeString and tag, after that, it will filter the word by tags
+        with this, there are no need to use tokenizeString, tagTokens
+    
+    addWordToList add, create new word in the keyWord list, which contains word and it's frequency
+        used to select most common word
+        
+    returnTopWordWithCount return topNUmber of element in the sort list, list sorted decending by count
+    
 """
 class keyWord:
     def __init__(self, word):
@@ -48,10 +61,12 @@ class keyWordFilter:
             self.wordFrequencyList[self.wordFrequencyList.index(existList[0])].count += 1
         else:
             self.wordFrequencyList.append(keyWord(word))
+            
+    def returTopWordWithCount(self, topNumber):
+        self.wordFrequencyList.sort(key=lambda x: x.count, reverse = True)
         
+        if(len(self.wordFrequencyList) >= topNumber):
+            return self.wordFrequencyList[:topNumber]
+        else:
+            return self.wordFrequencyList[:len(self.wordFrequencyList)]
 
-string = 'As a member of our Software Engineering Group we look first and foremost for people who are passionate around solving business problems through innovation & engineering practices. You will be required to apply your depth of knowledge and expertise to all aspects of the software development lifecycle, as well as partner continuously with your many stakeholders on a daily basis to stay focused on common goals. We embrace a culture of experimentation and constantly strive for improvement and learning. You’ll work in a collaborative, trusting, thought-provoking environment—one that encourages diversity of thought and creative solutions that are in the best interests of our customers globally.'
-a = keyWordFilter()
-a.addWordToList('hi')
-a.addWordToList('2')
-a.addWordToList('2')
