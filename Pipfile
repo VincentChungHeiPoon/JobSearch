@@ -10,6 +10,7 @@ selenium = "*"
 bs4 = "*"
 spyder = "*"
 nltk = "*"
+beautifulsoup4 = "*"
 
 [requires]
 python_version = "3.7"
