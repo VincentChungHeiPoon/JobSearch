@@ -11,6 +11,9 @@ bs4 = "*"
 spyder = "*"
 nltk = "*"
 beautifulsoup4 = "*"
+requests = "*"
+html5lib = "*"
+lxml = "*"
 
 [requires]
 python_version = "3.7"

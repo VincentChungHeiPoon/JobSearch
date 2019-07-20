@@ -1,11 +1,4 @@
 # -*- coding: utf-8 -*-
-import nltk
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
-
 """
     >>>nltk.download('punkt')
     nltk.download('averaged_perceptron_tagger')
@@ -26,6 +19,8 @@ This is a temporary script file.
     returnTopWordWithCount return topNUmber of element in the sort list, list sorted decending by count
     
 """
+import nltk
+
 class keyWord:
     def __init__(self, word):
         self.word = word
