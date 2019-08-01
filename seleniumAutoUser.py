@@ -22,7 +22,9 @@ class WebBrowserController:
         
     def getRequirementHtml(self, requirementUrl):
         self.driver.get(requirementUrl);
-        return str(self.driver.page_source)
+        soup = BeautifulSoup(self.driver.page_source)
+        [s.extract() for s in soup('script')] 
+        return str(soup.find_all(text = True))
         
     def getAllPostingURL(self, title, location):
         self.indeedSearch(title, location)
@@ -51,6 +53,4 @@ class WebBrowserController:
         LocationInput.send_keys(Keys.ENTER)
         LocationInput.send_keys(Keys.ENTER)
         
-    def endDriver(self):
-        self.driver.quit()
         

@@ -23,6 +23,7 @@ class Scraper:
             keyWordList = self.keyWordFilter.filterTagAndSelectTokens(requirement)
             for word in keyWordList:
                 self.keyWordFilter.addWordToList(word)
+        self.controller.driver.quit()
         
 a = Scraper()
 a.getJobSkillsFor('software developer', 'houston')
