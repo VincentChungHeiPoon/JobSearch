@@ -21,7 +21,7 @@
 """
 import nltk
 
-class keyWord:
+class KeyWord:
     def __init__(self, word):
         self.word = word
         self.count = 1
@@ -43,21 +43,22 @@ class keyWordFilter:
         taggedTokens = nltk.pos_tag(tokens)
         return taggedTokens
     #select possible keywords base on tag
-    def filterTagAndSelectTokens(string):
+    def filterTagAndSelectTokens(self, string):
         tokens = keyWordFilter.tokenizeString(string)
         taggedTokens = keyWordFilter.tagTokens(tokens)
         filteredList = list(filter(lambda a: a[1] == 'NNP' or a[1] == 'NN' or a[1] == 'JJ', taggedTokens))
         return filteredList
     
     def addWordToList(self, word):
+        #see if element exist already
         existList = [words for words in self.wordFrequencyList if words.word == word]
         if len(existList) == 1: 
-            #print(self.wordFrequencyList.index(word))
             self.wordFrequencyList[self.wordFrequencyList.index(existList[0])].count += 1
         else:
-            self.wordFrequencyList.append(keyWord(word))
+            self.wordFrequencyList.append(KeyWord(word))
             
-    def returTopWordWithCount(self, topNumber):
+#return topNumber of most frequent words
+    def returnTopWordWithCount(self, topNumber):
         self.wordFrequencyList.sort(key=lambda x: x.count, reverse = True)
         
         if(len(self.wordFrequencyList) >= topNumber):
@@ -65,3 +66,9 @@ class keyWordFilter:
         else:
             return self.wordFrequencyList[:len(self.wordFrequencyList)]
 
+    def printKeyWord(self, topNumber):
+        words = self.returnTopWordWithCount(topNumber)
+        for word in words:
+            #converstion needed since word is considered a tuple
+            print('Word: ' + str(word.word) + 'Frequency: ' + str(word.count))
+        
